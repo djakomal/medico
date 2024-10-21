@@ -12,6 +12,8 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 import java.util.Optional;
 
+import static org.springframework.http.MediaType.APPLICATION_JSON_VALUE;
+
 @Controller
 @RestController
 @RequestMapping("/user")
@@ -33,9 +35,9 @@ public class UserController {
 
 
     @PutMapping("/update/{Id}")
-    public UserDto update(@PathVariable Long Id, @RequestBody UserDto user) throws Exception{
-        UserDto updatedUser = userService.update(Id,user);
-        return  userService.update(Id, updatedUser);
+    public User update(@PathVariable Long Id, @RequestBody User user) throws Exception{
+//        UserDto updatedUser = userService.update(Id,user);
+        return userService.update(Id, user);
     }
 
      @DeleteMapping("/delete/{id}")

@@ -46,14 +46,25 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public UserDto update(Long Id , UserDto user) throws Exception {
-            //User UserExisting = UserRepository.findById(user.getId());
+    public User update(Long Id , User user) throws Exception {
+        /*    //User UserExisting = UserRepository.findById(user.getId());
             User userExisting = userRepository.findById(user.getId())
                     .orElseThrow(() -> new Exception("User not found with id: " + user.getId()));
             //orElseThrow(()->new TaxesException(ExeceptionMessage.Taxe_UPDATE_FAILED_BY_ID ) );
             BeanUtils.copyProperties(user, userExisting);
             User updateUser= userRepository.save(userExisting);
-            return userdtomapper.mapToUserDto(updateUser);
+            return userdtomapper.mapToUserDto(updateUser);*/
+        User users=this.getUserById(Id);
+        users.setEmail(user.getEmail());
+        users.setUsername(user.getUsername());
+        users.setPassword(user.getPassword());
+        users.setFirstName(user.getFirstName());
+        users.setLastName(user.getLastName());
+        users.setEnabled(user.getEnabled());
+        users.setGender(user.getGender());
+        users.setLastseen(user.getLastseen());
+        User req=userRepository.save(users);
+        return req;
     }
 
     @Override

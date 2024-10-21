@@ -11,7 +11,7 @@ public interface UserService {
 
     User add(User user);
 
-    UserDto update(Long Id, UserDto user) throws Exception;
+    User update(Long Id, User user) throws Exception;
 
     //void delete(Long userId);
 
